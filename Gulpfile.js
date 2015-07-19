@@ -13,7 +13,7 @@ var paths = {
 	styles: ['styles/**/*.css'],
 	html: ['index.html', '404.html'],
 	images: ['images/**/*.png'],
-	extras: ['crossdomain.xml', 'humans.txt', 'manifest.appcache', 'robots.txt', 'favicon.ico'],
+	models: ['models/**/*.dae']
 };
 
 // watch files for changes and reload
@@ -58,6 +58,9 @@ gulp.task('copy'/*, ['clean']*/, function() {
 	// Copy html
 	gulp.src(paths.html, {cwd: bases.src})
 		.pipe(gulp.dest(bases.dist));
+	// Copy models
+	gulp.src(paths.models, {cwd: bases.src})
+		.pipe(gulp.dest(bases.dist + '/models'));
 });
 
 // A development task to run anytime a file changes

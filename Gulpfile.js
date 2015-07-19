@@ -19,6 +19,7 @@ var paths = {
 // watch files for changes and reload
 gulp.task('serveprod', function() {
 	browserSync({
+		port: process.env.PORT || 3000, // localhost:5000
 		server: {
 			baseDir: './dist'
 		}

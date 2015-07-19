@@ -17,7 +17,7 @@ var paths = {
 };
 
 // watch files for changes and reload
-gulp.task('serve', function() {
+gulp.task('serveprod', function() {
 	browserSync({
 		server: {
 			baseDir: './dist'

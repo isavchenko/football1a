@@ -4,9 +4,8 @@
   "description": "Football 1 a side",
   "main": "Gulpfile.js",
   "dependencies": {
-    "gulp": "~3.9.0"
-  },
-  "devDependencies": {
+    "gulp": "~3.9.0",
+
     "browser-sync": "~2.7.13",
     "gulp-bower": "0.0.10",
     "gulp-typescript": "~2.7.8",
@@ -14,6 +13,9 @@
     "gulp-sourcemaps": "~1.5.2",
     "tsd": "~0.6.3",
     "gulp-clean": "~0.3.1"
+  },
+  "devDependencies": {
+
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -17,7 +17,7 @@ var paths = {
 };
 
 // watch files for changes and reload
-gulp.task('serveprod', function() {
+gulp.task('run', function() {
 	browserSync({
 		port: process.env.PORT || 3000, // localhost:5000
 		server: {
@@ -73,3 +73,4 @@ gulp.task('bower', function() {
 });
 
 gulp.task('build', ['clean', 'ts', 'copy', 'bower']);
+gulp.task('up', ['build', 'run'])

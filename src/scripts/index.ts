@@ -1,38 +1,22 @@
 /// <reference path="./typings/tsd.d.ts" />
 /// <reference path="./index.d.ts" />
+/// <reference path="coordinates.ts"/>
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-var cube = new THREE.Mesh(geometry, material);
 
-camera.position.x = 3;
-camera.position.y = 3;
-camera.position.z = 3;
+var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(5, 5, 3);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 var directionalLight = new THREE.DirectionalLight(0xffffff);
-directionalLight.position.set(2, 2, 2).normalize();
+directionalLight.position.set(3, 3, -1).normalize();
 scene.add(directionalLight);
-// coordinate system
-function drawCoordinateLine(vector, color) {
-    var lineMaterial = new THREE.LineBasicMaterial({
-        color: color
-    });
-    var lineEnd = new THREE.Geometry();
-    lineEnd.vertices.push(new THREE.Vector3(0, 0, 0));
-    lineEnd.vertices.push(vector);
-    var linex = new THREE.Line(lineEnd, lineMaterial);
-    scene.add(linex);
-}
 
-drawCoordinateLine(new THREE.Vector3(10, 0, 0),  0x0000ff);
-drawCoordinateLine(new THREE.Vector3(0, 10, 0),  0x00ff00);
-drawCoordinateLine(new THREE.Vector3(0, 0, 10),  0xff0000);
+WorldCoordinates.setUpCartesianCoordinates();
 
 var loader = new THREE.ColladaLoader();
 var localObject;

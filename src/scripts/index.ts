@@ -19,17 +19,13 @@ scene.add(directionalLight);
 WorldCoordinates.setUpCartesianCoordinates();
 
 var loader = new THREE.ColladaLoader();
-var localObject;
+var ball;
 loader.options.convertUpAxis = true;
 loader.load( '../models/ball.dae', function ( collada ) {
-    localObject = collada.scene.children[0];
-    localObject.updateMatrix();
-    localObject.position.x = localObject.position.y = localObject.position.z = 0;
-    localObject.position.x = 0;
-    localObject.position.y = 0;
-    localObject.position.z = 0;
-    scene.add(localObject);
-    console.log('BAll', localObject);
+    ball = collada.scene.children[0];
+    ball.updateMatrix();
+    ball.position.x = ball.position.y = ball.position.z = 0;
+    scene.add(ball);
 
     var startBall = false;
     renderer.domElement.onclick = function (e) {
@@ -39,14 +35,11 @@ loader.load( '../models/ball.dae', function ( collada ) {
         var mouse3D = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1,   //x
             -( event.clientY / window.innerHeight ) * 2 + 1,
             0.5 );
-        console.log(mouse3D);
         mouse3D = mouse3D.unproject(camera);
-        console.log(mouse3D);
         mouse3D = mouse3D.sub( camera.position );
-        console.log(mouse3D);
         mouse3D = mouse3D.normalize();
         var raycaster = new THREE.Raycaster( camera.position, mouse3D );
-        var intersects = raycaster.intersectObject( localObject ,true);
+        var intersects = raycaster.intersectObject( ball ,true);
         console.log(intersects);
         // Change color if hit block
         if ( intersects.length > 0 ) {
@@ -82,11 +75,11 @@ loader.load( '../models/ball.dae', function ( collada ) {
             }
             v -= aBall * dt;
 
-            localObject.position.y += v * dt - aBall * Math.pow(dt, 2) / 2;
-            localObject.rotation.x += 0.1;
+            ball.position.y += v * dt - aBall * Math.pow(dt, 2) / 2;
+            ball.rotation.x += 0.1;
 
-            if (localObject.position.y < 0) {
-                localObject.position.y = 0;
+            if (ball.position.y < 0) {
+                ball.position.y = 0;
                 v = - v / 1.4;
             }
         }

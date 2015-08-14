@@ -3,11 +3,11 @@
  */
 class Ball {
     loaded: boolean;
-    model: any;
+    model: THREE.Object3D;
     a: THREE.Vector3;
     v: THREE.Vector3;
 
-    load(callback: (model: any) => void) {
+    load(callback: (model: THREE.Object3D) => void) {
         var loader = new THREE.ColladaLoader();
         var ball;
         loader.options.convertUpAxis = true;

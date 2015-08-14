@@ -1,19 +1,19 @@
 module WorldCoordinates {
     // coordinate system
-    function drawCoordinateLine(vector: THREE.Vector3, color: number): void {
+    function drawCoordinateLine(vector: THREE.Vector3, color: number): THREE.Line {
         var lineMaterial = new THREE.LineBasicMaterial({
             color: color
         });
         var lineEnd = new THREE.Geometry();
         lineEnd.vertices.push(new THREE.Vector3(0, 0, 0));
         lineEnd.vertices.push(vector);
-        var linex = new THREE.Line(lineEnd, lineMaterial);
-        scene.add(linex);
+        return new THREE.Line(lineEnd, lineMaterial);
+
     }
 
-    export function setUpCartesianCoordinates(): void {
-        drawCoordinateLine(new THREE.Vector3(10, 0, 0),  0x0000ff);
-        drawCoordinateLine(new THREE.Vector3(0, 10, 0),  0x00ff00);
-        drawCoordinateLine(new THREE.Vector3(0, 0, 10),  0xff0000);
+    export function setUpCartesianCoordinates(scene: THREE.Scene): void {
+        scene.add(drawCoordinateLine(new THREE.Vector3(10, 0, 0),  0x0000ff));
+        scene.add(drawCoordinateLine(new THREE.Vector3(0, 10, 0),  0x00ff00));
+        scene.add(drawCoordinateLine(new THREE.Vector3(0, 0, 10),  0xff0000));
     }
 }

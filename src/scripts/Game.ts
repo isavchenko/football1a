@@ -46,6 +46,7 @@ class Game {
     update (dTime: number = 1 / 60) {
         if (this.ballIntersectsPlane() && this.ball.v.y < 0) {
             this.ball.v.set(this.ball.v.x, - this.ball.v.y, this.ball.v.z);
+            this.ball.v.multiplyScalar(this.field.coef);
         }
         this.ball.update(dTime);
     }

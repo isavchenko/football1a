@@ -2,7 +2,7 @@
  * Soccer field
  */
 class Field {
-    coef: number = 0.3;
+    coef: number = 0.8;
     model: THREE.Object3D;
 
     load(callback: (model: THREE.Object3D) => any) {

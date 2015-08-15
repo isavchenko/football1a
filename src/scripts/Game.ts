@@ -27,7 +27,7 @@ class Game {
            this.scene.add(field);
         });
         //this.ball.a = new THREE.Vector3(0, 10, 0); // todo: remove this
-        this.ball.v = new THREE.Vector3(1, 10, 1); //todo: remove this
+        //this.ball.v = new THREE.Vector3(1, 10, 1); //todo: remove this
     }
 
     private initCamera() {
@@ -47,6 +47,11 @@ class Game {
         if (this.ballIntersectsPlane() && this.ball.v.y < 0) {
             this.ball.v.set(this.ball.v.x, - this.ball.v.y, this.ball.v.z);
             this.ball.v.multiplyScalar(this.field.coef);
+        }
+        if (this.ballIntersectsPlane()) {
+            var ballGeometry = (<THREE.Mesh>this.ball.model.children[0]).geometry;
+            var ballBoundingSphere = ballGeometry.boundingSphere;
+            this.ball.model.position.y = ballBoundingSphere.radius;
         }
         this.ball.update(dTime);
     }

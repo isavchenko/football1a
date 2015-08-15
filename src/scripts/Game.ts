@@ -6,6 +6,7 @@ class Game {
     camera: THREE.Camera;
     light: THREE.Light;
     ball: Ball;
+    field: Field;
 
     constructor() {
 
@@ -20,6 +21,10 @@ class Game {
         this.ball = new Ball();
         this.ball.load((ball) => {
             this.scene.add(ball);
+        });
+        this.field = new Field();
+        this.field.load((field) => {
+           this.scene.add(field);
         });
         //this.ball.a = new THREE.Vector3(0, 10, 0); // todo: remove this
         this.ball.v = new THREE.Vector3(1, 10, 1); //todo: remove this

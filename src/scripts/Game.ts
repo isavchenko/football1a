@@ -21,8 +21,8 @@ class Game {
         this.ball.load((ball) => {
             this.scene.add(ball);
         });
-        this.ball.a = new THREE.Vector3(0, 5, 0); // todo: remove this
-        this.ball.v = new THREE.Vector3(50, 50, 0); //todo: remove this
+        //this.ball.a = new THREE.Vector3(0, 10, 0); // todo: remove this
+        this.ball.v = new THREE.Vector3(1, 10, 1); //todo: remove this
     }
 
     private initCamera() {

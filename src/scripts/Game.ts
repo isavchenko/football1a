@@ -44,10 +44,19 @@ class Game {
     }
 
     update (dTime: number = 1 / 60) {
+        if (this.ballIntersectsPlane() && this.ball.v.y < 0) {
+            this.ball.v.set(this.ball.v.x, - this.ball.v.y, this.ball.v.z);
+        }
         this.ball.update(dTime);
     }
 
     isLoaded(): boolean {
         return this.ball.loaded;
+    }
+
+    ballIntersectsPlane() {
+        var ballGeometry = (<THREE.Mesh>this.ball.model.children[0]).geometry;
+        var ballBoundingSphere = ballGeometry.boundingSphere;
+        return ballBoundingSphere && (this.ball.model.position.y - ballBoundingSphere.radius) < 0;
     }
 }

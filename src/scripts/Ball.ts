@@ -20,6 +20,7 @@ class Ball {
             ball.position.set(0, 0, 0);
             self.model = ball;
             self.loaded = true;
+            console.log(ball);
             callback(ball);
         });
     }

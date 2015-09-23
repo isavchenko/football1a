@@ -7,6 +7,7 @@ class Game {
     light: THREE.Light;
     ball: Ball;
     field: Field;
+    player: Player;
 
     constructor() {
 
@@ -25,6 +26,10 @@ class Game {
         this.field = new Field();
         this.field.load((field) => {
            this.scene.add(field);
+        });
+        this.player = new Player();
+        this.player.load((player) => {
+            this.scene.add(player);
         });
         //this.ball.a = new THREE.Vector3(0, 10, 0); // todo: remove this
         //this.ball.v = new THREE.Vector3(1, 10, 1); //todo: remove this
